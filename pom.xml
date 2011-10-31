@@ -7,8 +7,31 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>datalib</name>
+    <name>DataLib</name>
+    <url>https://github.com/bigdata-mx/DataLib/</url>
+    <issueManagement>
+      <system>github.com</system>
+      <url>https://github.com/bigdata-mx/DataLib/issues</url>
+    </issueManagement>
+    <inceptionYear>2011</inceptionYear>
+    <licenses>
+      <license>
+        <name>The Apache Software License, Version 2.0</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>repo</distribution>
+      </license>
+    </licenses>
 
+    <scm>
+      <url>git://github.com/bigdata-mx/DataLib.git</url>
+      <connection>scm:git:git@github.com:bigdata-mx/DataLib.git</connection>
+      <developerConnection>scm:git:git@github.com:bigdata-mx/DataLib.git</developerConnection>
+    </scm>
+
+    <properties>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
