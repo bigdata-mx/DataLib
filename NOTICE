@@ -1,0 +1,42 @@
+                     DATALIB LICENSE INFORMATION
+
+August 15, 2011
+
+DataLib software is licensed under the Apache License,
+Version 2.0. Other software included in this distribution is provided under 
+other licenses, as listed in the Included Software and Licenses section at 
+the bottom of this page. Source code for software included in this distribution
+is available from the DataLib project or as otherwise 
+indicated at the bottom of this page. 
+
+===
+
+LICENSE INFORMATION REGARDING BUNDLED THIRD-PARTY SOFTWARE
+
+The following third party software is distributed with DataLib
+software and is provided under other licenses and/or
+has source available from other locations.
+
+* Jackson JSON
+  License: Apache License, Version 2.0
+  Source code availability: http://jackson.codehaus.org/
+
+* Google guava-libraries
+  License: Apache License, Version 2.0 
+  Source code availability: http://code.google.com/p/guava-libraries/
+
+* Apache Commons
+  License: Apache License, Version 2.0
+  Source code availability: http://commons.apache.org/codec/
+
+* Spring Framework
+  License: Apache License, Version 2.0
+  Source code availability: http://www.springsource.com/
+
+* Scala Lang
+  License: Scala License
+  Source code availability: http://www.scala-lang.org/      
+
+* Ehcache
+  License: Apache License, Version 2.0
+  Source code availability: http://www.ehcache.org/
