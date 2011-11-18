@@ -29,7 +29,21 @@ class QueryBuilder {
     builder.append(" FROM ")
     builder.append(from)
   }
+
+  def join(table: String) = {
+    builder.append(" JOIN ")
+    builder.append(table)
+  }
   
+  def on(clauses: String*) = {      
+    var on = clauses.filter { d => d.length != 0 }.mkString(" AND");
+    if (on.length != 0) {
+      builder.append(" ON (")
+      builder.append(on)
+      builder.append(")")
+    }
+  }
+
   def where(clauses: String*) = {      
     var where = clauses.filter { d => d.length != 0 }.mkString(" AND");
     if (where.length != 0) {
