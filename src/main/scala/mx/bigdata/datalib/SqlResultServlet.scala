@@ -61,6 +61,8 @@ abstract class SqlResultServlet extends ResultBuilderServlet {
   }
   
   def doGetBuilder(sql: String, request: HttpServletRequest): ResultBuilder = { 
-    return newResultBuilder(request)
+    var mapper = newResultBuilder(request)
+    mapper.query(sql, jdbcTemplate)
+    return mapper;
   }
 }

@@ -36,7 +36,7 @@ class QueryBuilder {
   }
   
   def on(clauses: String*) = {      
-    var on = clauses.filter { d => d.length != 0 }.mkString(" AND");
+    var on = clauses.filter { d => d.length != 0 }.mkString(" AND ");
     if (on.length != 0) {
       builder.append(" ON (")
       builder.append(on)
@@ -45,7 +45,7 @@ class QueryBuilder {
   }
 
   def where(clauses: String*) = {      
-    var where = clauses.filter { d => d.length != 0 }.mkString(" AND");
+    var where = clauses.filter { d => d.length != 0 }.mkString(" AND ");
     if (where.length != 0) {
       builder.append(" WHERE ")
       builder.append(where)
@@ -84,6 +84,28 @@ class QueryBuilder {
     inner.append(String.format("'%s'", from))
     inner.append(" AND ")
     inner.append(String.format("'%s'", to))
+    inner.toString()
+  }
+
+  def between(key: String, from: Long, to: Long): String = {
+    var inner = new StringBuilder()
+    inner.append(" ")
+    inner.append(key)
+    inner.append(" BETWEEN ")
+    inner.append(from)
+    inner.append(" AND ")
+    inner.append(to)
+    inner.toString()
+  }
+
+  def op(key: String, op: String, value: Object): String = {
+    var inner = new StringBuilder()
+    inner.append(" ")
+    inner.append(key)
+    inner.append(" ")
+    inner.append(op)
+    inner.append(" ")
+    inner.append(value)
     inner.toString()
   }
   
