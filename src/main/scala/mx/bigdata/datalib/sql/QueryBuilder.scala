@@ -14,7 +14,7 @@
  *  limitations under the License.
  */
 
-package mx.bigdata.datalib;
+package mx.bigdata.datalib.sql;
 
 class QueryBuilder {
   

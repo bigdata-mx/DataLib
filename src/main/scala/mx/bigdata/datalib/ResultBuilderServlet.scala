@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest
 trait ResultBuilderServlet extends HttpServlet {
   
   def buildQuery(request: HttpServletRequest): String
-
-  def newResultBuilder(request: HttpServletRequest): ResultBuilder
-
+  
+  def getParameters(request: HttpServletRequest): Array[String]
 }

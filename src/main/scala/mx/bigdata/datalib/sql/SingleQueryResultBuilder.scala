@@ -14,33 +14,37 @@
  *  limitations under the License.
  */
 
-package mx.bigdata.datalib;
+package mx.bigdata.datalib.sql;
 
-import java.io.{IOException, PrintWriter}
-import java.sql.{ResultSet, ResultSetMetaData, SQLException}
-import java.util.{Collection, Date, List => JList, Map => JMap}
-
+import java.io.{ IOException, PrintWriter }
+import java.sql.{ ResultSet, ResultSetMetaData, SQLException }
+import java.util.{ Collection, Date, List => JList, Map => JMap }
 import javax.annotation.Resource
 import javax.servlet.http.HttpServletRequest
 import javax.sql.DataSource
-
 import org.springframework.jdbc.core.JdbcTemplate
-
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
 import scala.collection.JavaConversions._
+import org.springframework.jdbc.core.PreparedStatementSetter
+import java.sql.PreparedStatement
+import mx.bigdata.datalib.JsonResultBuilder
 
-class TabularResultBuilder extends JsonResultBuilder {
+class SingleQueryResultBuilder(jdbcTemplate: JdbcTemplate) extends JsonResultBuilder {
 
   val logger: Logger = LoggerFactory.getLogger(getClass)
 
-  var data: JList[JMap[String,Object]] = null
-  
-  def query(query: String, jdbcTemplate: JdbcTemplate) = {
-    data = jdbcTemplate.queryForList(query)
+  var data: JMap[String, Object] = null
+
+  def query(query: String, list: String*) = {
+    Console.println(list)
+    data =
+      if (list.size == 0)
+        jdbcTemplate.queryForMap(query)
+      else
+        jdbcTemplate.queryForMap(query, list.toArray: _*)
   }
 
   def build(request: HttpServletRequest) = mapper.writeValueAsString(data)
-  
+
 }

@@ -18,11 +18,9 @@ package mx.bigdata.datalib;
 
 import javax.servlet.http.HttpServletRequest
 
-import org.springframework.jdbc.core.JdbcTemplate
-
 trait ResultBuilder {
-
-  def query(query: String, jdbcTemplate: JdbcTemplate)
+  
+  def query(query: String, list: String*)
 
   def build(request: HttpServletRequest): String
 
