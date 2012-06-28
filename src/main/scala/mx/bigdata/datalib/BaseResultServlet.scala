@@ -21,10 +21,6 @@ import javax.servlet.http.HttpServletResponse
 import javax.servlet.ServletConfig
 
 abstract class BaseResultServlet extends ResultBuilderServlet {
-
-  override def init(config: ServletConfig) = {
-    super.init(config)
-  }
     
   def newResultBuilder(request: HttpServletRequest): ResultBuilder
 

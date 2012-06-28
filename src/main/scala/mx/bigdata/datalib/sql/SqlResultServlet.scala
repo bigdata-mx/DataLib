@@ -33,11 +33,10 @@ import org.slf4j.LoggerFactory
 import scala.collection.JavaConversions._
 import mx.bigdata.datalib.ResultBuilder
 import mx.bigdata.datalib.ResultBuilderServlet
+import javax.naming.InitialContext
+import javax.naming.Context
 
 abstract class SqlResultServlet extends ResultBuilderServlet {
-
-  @Resource(name = "jdbc/data")
-  var datasource: DataSource = null
 
   var jdbcTemplate: JdbcTemplate = null
   
@@ -45,7 +44,10 @@ abstract class SqlResultServlet extends ResultBuilderServlet {
 
   override def init(config: ServletConfig) = {
     super.init(config)
-    jdbcTemplate = new JdbcTemplate(datasource)
+    val initCtx = new InitialContext();
+    val envCtx = initCtx.lookup("java:comp/env").asInstanceOf[Context];
+    val ds = envCtx.lookup("jdbc/cse").asInstanceOf[DataSource];
+    jdbcTemplate = new JdbcTemplate(ds)
   }
 
   override def doGet(request: HttpServletRequest,
@@ -53,8 +55,6 @@ abstract class SqlResultServlet extends ResultBuilderServlet {
     var sql = buildQuery(request)
     var mapper = doGetBuilder(sql, request)
     response.setContentType("application/json");
-    response.setHeader("Access-Control-Allow-Origin", getServletContext()
-      .getInitParameter("Access-Control-Allow-Origin"));
     var out = response.getWriter()
     out.println(mapper.build(request))
   }

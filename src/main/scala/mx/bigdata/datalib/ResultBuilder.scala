@@ -20,8 +20,10 @@ import javax.servlet.http.HttpServletRequest
 
 trait ResultBuilder {
   
+  @throws(classOf[Exception])
   def query(query: String, list: String*)
 
+  @throws(classOf[Exception])
   def build(request: HttpServletRequest): String
 
 }
